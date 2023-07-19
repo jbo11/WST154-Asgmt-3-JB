@@ -1,0 +1,152 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calendar 2023</title>
+  <style>
+    body {
+      text-align: center;
+      background-color: #EE964B;
+    }
+
+    table {
+      width: 50%;
+      margin: 20px auto;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 10px;
+      border: 1px solid black;
+      width: calc(100% / 7);
+      color: #fff;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      color: #0D3B66;
+    }
+
+    td {
+      background-color: #0D3B66;
+    }
+
+    select {
+      margin-top: 20px;
+    }
+
+    option:first-child {
+      display: none;
+    }
+
+    h1 {
+      font-size: 40px;
+      color: #0D3B66; 
+    }
+  </style>
+</head>
+<body>
+  <h1>CALENDAR 2023</h1>
+
+  <label for="month-select">Select a month:</label>
+  <select id="month-select" onchange="populateCalendar()">
+    <option value="" selected disabled hidden> - </option>
+    <option value="1">January</option>
+    <option value="2">February</option>
+    <option value="3">March</option>
+    <option value="4">April</option>
+    <option value="5">May</option>
+    <option value="6">June</option>
+    <option value="7">July</option>
+    <option value="8">August</option>
+    <option value="9">September</option>
+    <option value="10">October</option>
+    <option value="11">November</option>
+    <option value="12">December</option>
+  </select>
+
+  <table id="calendar-table">
+    <thead>
+      <tr>
+        <th>SUN</th>
+        <th>MON</th>
+        <th>TUE</th>
+        <th>WED</th>
+        <th>THU</th>
+        <th>FRI</th>
+        <th>SAT</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td id="date1"></td>
+        <td id="date2"></td>
+        <td id="date3"></td>
+        <td id="date4"></td>
+        <td id="date5"></td>
+        <td id="date6"></td>
+        <td id="date7"></td>
+      </tr>
+      <tr>
+        <td id="date8"></td>
+        <td id="date9"></td>
+        <td id="date10"></td>
+        <td id="date11"></td>
+        <td id="date12"></td>
+        <td id="date13"></td>
+        <td id="date14"></td>
+      </tr>
+      <tr>
+        <td id="date15"></td>
+        <td id="date16"></td>
+        <td id="date17"></td>
+        <td id="date18"></td>
+        <td id="date19"></td>
+        <td id="date20"></td>
+        <td id="date21"></td>
+      </tr>
+      <tr>
+        <td id="date22"></td>
+        <td id="date23"></td>
+        <td id="date24"></td>
+        <td id="date25"></td>
+        <td id="date26"></td>
+        <td id="date27"></td>
+        <td id="date28"></td>
+      </tr>
+      <tr>
+        <td id="date29"></td>
+        <td id="date30"></td>
+        <td id="date31"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    function populateCalendar() {
+      var monthSelect = document.getElementById("month-select");
+      var selectedMonth = parseInt(monthSelect.value);
+      var calendarTable = document.getElementById("calendar-table");
+
+      var daysInMonth = new Date(2023, selectedMonth, 0).getDate();
+      var startDay = new Date(2023, selectedMonth - 1, 1).getDay();
+
+      var dateCells = calendarTable.getElementsByTagName("td");
+      for (var i = 0; i < dateCells.length; i++) {
+        dateCells[i].innerHTML = "";
+      }
+
+      for (var day = 1; day <= daysInMonth; day++) {
+        var cellIndex = startDay + day - 1;
+        dateCells[cellIndex].innerHTML = day;
+      }
+    }
+  </script>
+</body>
+</html>
